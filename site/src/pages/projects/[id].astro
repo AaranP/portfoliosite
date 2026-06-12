@@ -1,0 +1,178 @@
+---
+import { render } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import { publicProjects, dateRange, noTodo } from '../../lib/data';
+import { resolveMedia } from '../../lib/media';
+import { url } from '../../lib/url';
+
+export async function getStaticPaths() {
+  // publicProjects already enforces the visibility filter — private entries
+  // never get a route
+  return (await publicProjects()).map((project) => ({
+    params: { id: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { data } = project;
+const { Content } = await render(project);
+
+const role = noTodo(data.my_role);
+const outcomes = data.outcomes.map((o) => noTodo(o.text)).filter(Boolean);
+const media = data.media
+  .map((m) => resolveMedia(project.id, m.file, m.caption))
+  .filter((m) => m !== null);
+const images = media.filter((m) => m.kind === 'image');
+const documents = media.filter((m) => m.kind === 'document');
+const team = data.team_size === 1 ? 'Solo' : `Team of ${data.team_size}`;
+const meta = [dateRange(data.start, data.end), noTodo(data.course), team, data.client]
+  .filter(Boolean)
+  .join(' · ');
+const hasRepo = data.repo.startsWith('http');
+---
+
+<Base title={`${data.name} — Aaran Poon`} description={data.summary.trim()}>
+  <article class="container">
+    <nav aria-label="Breadcrumb">
+      <a href={url('/#projects')}>← All projects</a>
+    </nav>
+
+    <header>
+      <h1>{data.name}</h1>
+      <p class="muted mono meta">{meta}</p>
+      <ul class="tag-list" aria-label="Technologies">
+        {data.tech.map((t) => <li class="tag">{t}</li>)}
+      </ul>
+      {
+        (hasRepo || data.demo) && (
+          <p class="ext-links">
+            {hasRepo && <a href={data.repo}>Source on GitHub</a>}
+            {data.demo && <a href={data.demo}>Demo</a>}
+          </p>
+        )
+      }
+    </header>
+
+    <p class="lede">{data.summary}</p>
+
+    <h2>Problem</h2>
+    <p>{data.problem}</p>
+
+    {
+      outcomes.length > 0 && (
+        <>
+          <h2>Outcomes</h2>
+          <ul>
+            {outcomes.map((o) => (
+              <li>{o}</li>
+            ))}
+          </ul>
+        </>
+      )
+    }
+
+    {role && <p><strong>My role:</strong> {role}</p>}
+
+    <Content />
+
+    {
+      images.length > 0 && (
+        <section aria-label="Media">
+          <h2>Media</h2>
+          {images.map((m) =>
+            m.image.format === 'gif' ? (
+              <figure>
+                <img
+                  src={m.image.src}
+                  alt={m.caption || data.name}
+                  width={m.image.width}
+                  height={m.image.height}
+                  loading="lazy"
+                />
+                {m.caption && <figcaption class="muted">{m.caption}</figcaption>}
+              </figure>
+            ) : (
+              <figure>
+                <Image
+                  src={m.image}
+                  alt={m.caption || data.name}
+                  width={960}
+                  widths={[640, 960, 1440]}
+                  sizes="(max-width: 1024px) 92vw, 960px"
+                  loading="lazy"
+                />
+                {m.caption && <figcaption class="muted">{m.caption}</figcaption>}
+              </figure>
+            ),
+          )}
+        </section>
+      )
+    }
+
+    {
+      documents.length > 0 && (
+        <>
+          <h2>Documents</h2>
+          <ul>
+            {documents.map((m) => (
+              <li>
+                <a href={m.url}>{m.caption || 'Report'} (PDF)</a>
+              </li>
+            ))}
+          </ul>
+        </>
+      )
+    }
+  </article>
+</Base>
+
+<style>
+  article {
+    padding-block: 2rem 3rem;
+    max-width: 760px;
+  }
+
+  header {
+    margin-block: 1rem 1.5rem;
+  }
+
+  .meta {
+    font-size: 0.85rem;
+    margin-bottom: 0.75em;
+  }
+
+  .ext-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 0.75em;
+  }
+
+  .ext-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .lede {
+    font-size: var(--step-1);
+    font-family: var(--font-display);
+    line-height: 1.4;
+  }
+
+  h2,
+  article :global(h2) {
+    font-size: var(--step-2);
+    margin-top: 1.5em;
+  }
+
+  figure {
+    margin: 1.5rem 0;
+  }
+
+  figcaption {
+    font-size: 0.88rem;
+    margin-top: 0.4rem;
+  }
+</style>

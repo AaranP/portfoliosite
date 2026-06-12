@@ -1,0 +1,112 @@
+---
+import { url } from '../lib/url';
+
+// slim sticky bar, 4 anchor links — fits mobile without a hamburger (§5)
+const links = [
+  { href: url('/#projects'), label: 'Projects' },
+  { href: url('/#experience'), label: 'Experience' },
+  { href: url('/#skills'), label: 'Skills' },
+  { href: url('/#contact'), label: 'Contact' },
+];
+---
+
+<header class="nav-bar">
+  <nav class="container" aria-label="Main">
+    <a class="home mono" href={url('/')}>AP</a>
+    <ul>
+      {links.map((l) => (
+        <li><a href={l.href}>{l.label}</a></li>
+      ))}
+    </ul>
+    <button id="theme-toggle" type="button" aria-label="Toggle dark mode">
+      <span class="icon-light" aria-hidden="true">●</span>
+      <span class="icon-dark" aria-hidden="true">○</span>
+    </button>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById('theme-toggle');
+  toggle?.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('theme', next);
+  });
+</script>
+
+<style>
+  .nav-bar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 3.25rem;
+  }
+
+  .home {
+    font-weight: 700;
+    text-decoration: none;
+    /* 44px tap target */
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-inline: 0.25rem;
+  }
+
+  ul {
+    display: flex;
+    gap: 0.25rem;
+    list-style: none;
+    margin: 0 0 0 auto;
+    padding: 0;
+  }
+
+  ul a {
+    color: var(--text);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-inline: 0.6rem;
+    font-size: 0.95rem;
+  }
+
+  ul a:hover {
+    color: var(--accent);
+  }
+
+  button {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    border-radius: 6px;
+    min-width: 44px;
+    min-height: 44px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  /* show the symbol for the theme you'd switch TO */
+  .icon-dark,
+  :global([data-theme='dark']) .icon-light {
+    display: none;
+  }
+
+  :global([data-theme='dark']) .icon-dark {
+    display: inline;
+  }
+
+  @media (max-width: 400px) {
+    ul a {
+      padding-inline: 0.4rem;
+      font-size: 0.88rem;
+    }
+  }
+</style>

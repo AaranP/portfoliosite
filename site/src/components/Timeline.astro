@@ -1,0 +1,111 @@
+---
+import { publicExperience, dateRange, noTodo } from '../lib/data';
+
+const experience = await publicExperience();
+
+// 2–3 bullets per role: grounded achievements first, resume bullets as
+// fallback; TODO-bearing strings never render
+const items = experience.map((e) => {
+  const achievements = e.data.achievements.map((a) => noTodo(a.text)).filter(Boolean);
+  const bullets = (achievements.length ? achievements : e.data.resume_bullets.map(noTodo))
+    .filter(Boolean)
+    .slice(0, 3);
+  return { ...e.data, bullets, range: dateRange(e.data.start, e.data.end) };
+});
+---
+
+{/* single-line-diagram motif: one vertical bus, a square tap per role */}
+<ol class="timeline">
+  {
+    items.map((item) => (
+      <li>
+        <div class="tap" aria-hidden="true" />
+        <h3>
+          {item.title} <span class="company">· {item.company}</span>
+        </h3>
+        <p class="muted meta mono">
+          {item.range}
+          {item.range && ' · '}
+          {item.location}
+        </p>
+        {item.bullets.length > 0 && (
+          <ul class="bullets">
+            {item.bullets.map((b) => (
+              <li>{b}</li>
+            ))}
+          </ul>
+        )}
+        {item.tech.length > 0 && (
+          <ul class="tag-list" aria-label="Technologies">
+            {item.tech.map((t) => (
+              <li class="tag">{t}</li>
+            ))}
+          </ul>
+        )}
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  /* the bus */
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 0.4rem;
+    bottom: 0.4rem;
+    left: 5px;
+    width: 2px;
+    background: var(--accent);
+  }
+
+  .timeline li {
+    position: relative;
+    padding-left: 2rem;
+    padding-bottom: 2.25rem;
+  }
+
+  .timeline li:last-child {
+    padding-bottom: 0;
+  }
+
+  /* the square bus tap */
+  .tap {
+    position: absolute;
+    left: 0;
+    top: 0.4rem;
+    width: 12px;
+    height: 12px;
+    background: var(--accent);
+  }
+
+  h3 {
+    margin-bottom: 0.15em;
+  }
+
+  .company {
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .meta {
+    font-size: 0.82rem;
+    margin-bottom: 0.6em;
+  }
+
+  .bullets {
+    margin: 0 0 0.75em;
+    padding-left: 1.2rem;
+  }
+
+  .bullets li {
+    margin-bottom: 0.35em;
+  }
+</style>

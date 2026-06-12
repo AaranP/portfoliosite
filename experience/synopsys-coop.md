@@ -4,7 +4,7 @@ company: Synopsys
 title: R&D Verification Intern
 employment_type: coop
 location: Vancouver, BC
-remote: false                    # TODO: confirm (hybrid?)
+remote: hybrid                   
 start: 2025-08
 end: 2026-05
 domains: [verification, software, photonics]

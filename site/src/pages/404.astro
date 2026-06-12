@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/url';
+---
+
+<Base title="Page not found — Aaran Poon" description="Page not found.">
+  <section class="container">
+    <h1>404</h1>
+    <p>That page doesn't exist.</p>
+    <p><a href={url('/')}>Back to the home page</a></p>
+  </section>
+</Base>
+
+<style>
+  section {
+    min-height: 50vh;
+  }
+</style>

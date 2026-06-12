@@ -1,0 +1,47 @@
+# Build the Astro site in site/ and deploy to GitHub Pages on every push to
+# main (SITE_SPEC.md §9). The privacy check runs inside `npm run build`
+# (site/scripts/privacy-check.mjs) and fails the build if any
+# `visibility: private` entry string appears in dist/.
+#
+# One-time repo setup: Settings → Pages → Source: "GitHub Actions".
+# `site`/`base` in site/astro.config.mjs assume the repo is named
+# "portfoliosite" — update both if the repo name differs.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: withastro/action@v3
+        with:
+          path: ./site
+      - name: Privacy check (no private entries in dist)
+        run: node site/scripts/privacy-check.mjs
+      # Lighthouse CI could run here as a non-blocking report step later
+      # (treosh/lighthouse-ci-action) — kept out for now to keep CI simple.
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

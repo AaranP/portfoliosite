@@ -1,0 +1,93 @@
+---
+import { Picture } from 'astro:assets';
+import { aboutEntry } from '../lib/data';
+import photo from '../../../profile/photo.png';
+
+const about = await aboutEntry();
+const { name, headline, location, links } = about.data;
+// TODO: add a "Resume (PDF)" link once Information/resume.tx is compiled and
+// dropped into site/public/resume.pdf (no LaTeX toolchain on this machine).
+---
+
+<section class="hero container">
+  <Picture
+    src={photo}
+    formats={['webp']}
+    fallbackFormat="png"
+    width={520}
+    height={520}
+    widths={[260, 520, 1040]}
+    sizes="(max-width: 639px) 65vw, 320px"
+    alt={`Portrait of ${name}`}
+    loading="eager"
+    class="portrait"
+  />
+  <div class="intro">
+    <h1>{name}</h1>
+    <p class="headline">{headline}</p>
+    <p class="muted">{location}</p>
+    <ul class="links">
+      <li><a href={links.github}>GitHub</a></li>
+      <li><a href={links.linkedin}>LinkedIn</a></li>
+      <li><a href={`mailto:${links.email}`}>Email</a></li>
+    </ul>
+  </div>
+</section>
+
+<style>
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    padding-block: 3rem 2rem;
+  }
+
+  .portrait {
+    border-radius: 50%;
+    width: min(65vw, 280px);
+    height: auto;
+  }
+
+  .headline {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    margin-bottom: 0.25em;
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-inline: 0.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .hero {
+      flex-direction: row;
+      text-align: left;
+      gap: 3rem;
+      padding-block: 4rem 3rem;
+    }
+
+    .portrait {
+      width: 320px;
+      flex-shrink: 0;
+    }
+
+    .links {
+      justify-content: flex-start;
+    }
+  }
+</style>

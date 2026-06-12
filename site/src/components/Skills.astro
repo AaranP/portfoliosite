@@ -1,0 +1,57 @@
+---
+import { skillsEntry } from '../lib/data';
+
+const skills = await skillsEntry();
+const d = skills.data;
+
+// grouped tag clusters straight from skills.yaml (§5.5) — no proficiency bars
+const groups: { label: string; items: string[] }[] = [
+  { label: 'Languages', items: d.languages },
+  { label: 'Verification', items: d.verification },
+  { label: 'Hardware', items: d.hardware },
+  { label: 'Embedded', items: d.embedded },
+  { label: 'Machine Learning', items: d.ml },
+  { label: 'Tools', items: d.tools },
+  { label: 'Domains', items: d.domains },
+];
+---
+
+<div class="skills">
+  {
+    groups.map((g) => (
+      <div class="group">
+        <h3>{g.label}</h3>
+        <ul class="tag-list">
+          {g.items.map((s) => (
+            <li class="tag">{s}</li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+  <div class="group">
+    <h3>Certifications</h3>
+    <ul class="tag-list">
+      {d.certifications.map((c) => <li class="tag">{`${c.name} — ${c.issuer} (${c.date})`}</li>)}
+    </ul>
+  </div>
+</div>
+
+<style>
+  .skills {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 640px) {
+    .skills {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  h3 {
+    font-size: var(--step-0);
+    margin-bottom: 0.4em;
+  }
+</style>

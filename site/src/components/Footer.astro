@@ -1,0 +1,47 @@
+---
+import { aboutEntry } from '../lib/data';
+
+const about = await aboutEntry();
+const { links } = about.data;
+---
+
+<footer>
+  <div class="container">
+    <ul class="contact">
+      <li><a href={links.github}>GitHub</a></li>
+      <li><a href={links.linkedin}>LinkedIn</a></li>
+      <li><a href={`mailto:${links.email}`}>{links.email}</a></li>
+    </ul>
+    <p class="muted">
+      © {new Date().getFullYear()} {about.data.name} · Built with
+      <a href="https://astro.build">Astro</a>
+    </p>
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: 1px solid var(--border);
+    padding-block: 2rem;
+    font-size: 0.95rem;
+  }
+
+  .contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    list-style: none;
+    margin: 0 0 0.75rem;
+    padding: 0;
+  }
+
+  .contact a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  p {
+    margin: 0;
+  }
+</style>

@@ -1,0 +1,169 @@
+/* Design tokens — SITE_SPEC.md §6, verbatim. Light is default; dark via
+   [data-theme="dark"]. Accent discipline: accent only on links, active
+   filter chips, timeline dots, and primary buttons. */
+:root {
+  --bg: #FAFAF8;            /* off-white, not pure white */
+  --text: #1A1A1A;
+  --text-muted: #5A5A55;
+  --accent: #1E5AA8;        /* the ONE accent: links, chips, timeline dots */
+  --accent-soft: #E8EFF8;   /* chip/tag backgrounds */
+  --surface: #FFFFFF;       /* cards */
+  --border: #E4E2DC;
+
+  --font-body: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Space Grotesk', var(--font-body);
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+
+  /* 1.25 modular scale off 1rem body */
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.563rem;
+  --step-3: 1.953rem;
+  --step-4: 2.441rem;
+}
+
+[data-theme="dark"] {
+  --bg: #121417;            /* dark grey, never pure black */
+  --text: #E6E6E6;
+  --text-muted: #9AA0A6;
+  --accent: #F5A623;        /* warm amber accent in dark mode */
+  --accent-soft: #2A2418;
+  --surface: #1A1D21;
+  --border: #2A2E33;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* sticky nav height so anchor targets aren't hidden behind it */
+  scroll-padding-top: 4rem;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  transition: background-color 200ms ease, color 200ms ease; /* theme fade */
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (min-width: 960px) {
+  body {
+    font-size: 17px;
+  }
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); }
+h3 { font-size: var(--step-1); }
+
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 0.15em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* visible keyboard focus everywhere (quality floor §8) */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.container {
+  max-width: 1000px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+section {
+  padding-block: 3rem;
+}
+
+/* tech/domain tags: --accent-soft bg + muted text, mono face — no rainbow */
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  background: var(--accent-soft);
+  color: var(--text-muted);
+  border-radius: 4px;
+  padding: 0.15rem 0.5rem;
+  white-space: nowrap;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+/* cards */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* whole-card link (tap-target rule §5.2) */
+.card-link {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  height: 100%;
+}
+
+.card-link:hover h3,
+.card-link:focus-visible h3 {
+  color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

@@ -1,9 +1,6 @@
 ---
 name: Aaran Poon
-headline: >
-  Electrical engineer (UBC BASc '26, EIT) working in ASIC/digital
-  verification — currently Junior Verification Engineer at Synopsys.
-  # TODO: refine — write the headline you want on the site hero
+headline: Electrical EIT — ASIC Verification & Power Systems   # site hero headline per SITE_SPEC.md §5.1
 location: Vancouver, BC
 citizenship: Canadian Citizen
 links:
@@ -14,13 +11,16 @@ links:
 
 ## Bio
 
-TODO: 2–4 sentence first-person bio for the site. Raw material: UBC
-Electrical Engineering co-op grad (May 2026), EIT (EGBC); verification
-experience at Synopsys (Lumerical R&D, now contract) and AMD (Display IP
-ASIC validation); marine power systems at CANAL; capstone autonomous
-mapping drone; strong FPGA/RTL project history (ARC4, MP3 player, M68k
-system).
+I'm an electrical engineer (UBC BASc '26, EIT with EGBC) working across
+two lanes: digital/ASIC verification and power systems. I've verified
+photonics simulation software at Synopsys and Display IP silicon at AMD,
+and worked on polar icebreaker electrical systems at CANAL Marine. Outside
+of work I build things in RTL — from an FPGA MP3 player to a full M68k
+computer system running Tetris — and my capstone team shipped an
+autonomous indoor mapping drone.
 
-Two career tracks run through this data (mirrors the resume masters):
-**dv** (digital/ASIC verification) and **eit** (power/EIT professional
-track).
+<!-- TODO: refine voice — drafted 2026-06 from bank-anchored facts only -->
+
+<!-- Repo note (not rendered): two career tracks run through this data,
+mirroring the resume masters — dv (digital/ASIC verification) and eit
+(power/EIT professional track). -->

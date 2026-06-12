@@ -2,12 +2,12 @@
 school: University of British Columbia
 degree: Bachelor of Applied Science — Electrical Engineering (Co-op)
 location: Vancouver, BC
-start: ""                        # TODO: YYYY-MM program start
+start: 2021-09     
 end: 2026-05
-status: graduated                # TODO: confirm — resume says "May, 2026"; today is June 2026
+status: graduated May             
 eit:
   issuer: EGBC
-  date: 2026                     # TODO: confirm registration date
+  date: 2026                     
 coursework_dv:                   # as listed on the dv master resume
   - Computer Architecture
   - Analog CMOS Design
