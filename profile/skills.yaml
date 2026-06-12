@@ -1,0 +1,91 @@
+# Canonical skills inventory — tech: tags in experience/ and projects/ must use
+# these exact spellings (SCHEMA.md convention 1 & the skills.yaml note).
+# Parenthetical sources cite experience bank IDs; (familiar) = study-level only,
+# never professional-experience wording (bank guardrail).
+
+languages:
+  - Python          # E3, P1, P8, P11
+  - C               # P5, P7, Temperature_Strip_Chart
+  - C++             # E2, P1
+  - SQL             # E2
+  - SystemVerilog   # P4, P9, C1
+  - Verilog         # P4, P5, P6
+  - VHDL            # P6
+  - MATLAB          # eit master — TODO: confirm anchor (Laser Projector?)
+  - M68k Assembly   # P5, P6
+  - 8051 Assembly   # Capacitor_sensor_game
+
+verification:
+  - Functional Verification   # P4, P9
+  - Testbenches               # P4, P9
+  - RTL & Post-Synthesis Simulation  # P4
+  - Functional Coverage       # E2
+  - Questa                    # P9
+  - ModelSim                  # P4
+  - Signal Tap                # P9
+  - UVM (familiar)            # C3; E2 TODO confirm
+  - SVA (familiar)            # C3
+
+hardware:
+  - RTL Design        # P4, P5, P9
+  - FSM Design        # P4, P9, baccarat
+  - FPGA              # P4, P5, P6, P9 (DE1-SoC / Cyclone V)
+  - Avalon-MM         # P9
+  - CDC               # P9; C3
+  - Memory-Mapped I/O # P5
+  - Interrupts        # P5
+  - DRAM Controllers  # P6
+  - Caches            # P6
+  - UART              # P6
+  - SPI               # P6 (Assignment3), Temperature_Strip_Chart
+  - VGA               # P5, lab4
+
+embedded:
+  - Bare-Metal Firmware   # P7
+  - PIC32                 # P7
+  - ATmega328P            # Temperature_Strip_Chart
+  - Raspberry Pi          # P1
+  - Linux                 # P1, P3
+  - Docker                # P1
+  - ROS Noetic            # P1
+  - PX4                   # P1
+  - MAVROS                # P1
+  - VINS-Fusion           # P1
+  - FUEL                  # P1
+  - Sensor Integration    # P1 (Intel RealSense D435i, WHEELTEC N100)
+
+ml:
+  - PyTorch               # P11
+  - scikit-learn          # P8
+  - Pandas                # P8
+  - Jupyter               # P8
+  - Matplotlib            # P8, Temperature_Strip_Chart
+  - Weights & Biases      # P11
+
+tools:
+  - Quartus Prime         # P4, P5, P6
+  - Intel Platform Designer  # dv master skills — TODO: confirm anchor
+  - Cadence Virtuoso      # P10
+  - Spectre/SPICE         # P10
+  - LTSpice               # eit master — TODO: confirm anchor (Laser Projector?)
+  - Altium                # eit master — TODO: confirm anchor (Laser Projector?)
+  - AutoCAD               # E4
+  - ETAP                  # E4
+  - CADmatic              # E4
+  - Bluebeam              # E4
+  - SolidWorks            # P1
+  - Git                   # all repos
+
+domains:
+  - ASIC Verification     # E2
+  - Digital Design        # P4, P5, P6, P9
+  - Embedded Systems      # P1, P7
+  - Robotics              # P1, P7
+  - Power Systems         # E4
+  - Machine Learning      # P8, P11
+  - Single-Line Diagrams  # E4
+
+certifications:
+  - name: EIT
+    issuer: EGBC
+    date: 2026              # TODO: confirm registration date

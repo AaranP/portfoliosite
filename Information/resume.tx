@@ -1,0 +1,175 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome}
+
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
+
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Aaran Poon} \\ \vspace{1pt}
+    \small \ aaranp1919@gmail.com $|$
+    \ (236)-518-0077 $|$
+    \href{https://linkedin.com/in/aaranpoon}{\ \underline{linkedin.com/in/aaranpoon}} $|$
+    \href{https://github.com/AaranP}{\ \underline{github.com/AaranP}} $|$
+    \textbf{Canadian Citizen}
+\end{center}
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {University of British Columbia}{May, 2026}
+      {Bachelor of Applied Science -- Electrical Engineering CO-OP}{}
+      \resumeItemListStart
+        \resumeItem{Relevant coursework: Computer Architecture, Analog CMOS Design, VLSI Design, Control Systems.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Synopsys}{August 2025 -- May 2026}
+      {{R\&D Verification Intern} $|$ \emph{Python, Git}}{Vancouver, BC}
+      \resumeItemListStart
+        \resumeItem{Designed a modular \textbf{Python verification framework} for Lumerical script commands, automating release-wide command validation to replace manual QA protocols.}
+        \resumeItem{Maintaining and executing test plans, and contributing to testing metrics, reporting, and defect management.}
+        \resumeItem{Investigating and reproducing defects, collaborating with R\&D teams to verify fixes, and driving continuous product improvement through functional, regression, and performance testing.
+}
+        %\resumeItem{Built \textbf{Bamboo CI/CD build plans} to automate legacy regression suites, triggering continuous test execution and delivering immediate pass/fail feedback to the development team.}
+        %\resumeItem{Leveraged \textbf{Squish} for automated functional testing and root cause analysis, identifying critical software regressions and producing detailed diagnostic data.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {AMD}{September 2024 -- December 2024}
+      {{Graphics Quality Intern (ASIC Verification)} $|$ \emph{C++, Python, SQL, Git}}{Markham, Ontario}
+      \resumeItemListStart
+        \resumeItem{Executed \textbf{ASIC validation} on Display IP blocks using randomized test suites; analyzed \textbf{functional coverage reports} to achieve \textbf{100\% coverage compliance} at validation sign-off.}
+        \resumeItem{Debugged \textbf{driver-level C++} to root-cause regression failures and ensure functional stability in weekly Graphics IP driver releases.}
+        \resumeItem{Built a real-time \textbf{Python} dashboard backed by \textbf{SQL Server} to visualize nightly ASIC test results and failure rates, reducing mean debug time by \textbf{10\%}.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {CANAL Marine Industries}{May 2024 -- September 2024}
+      {{Electrical Engineer Co-op} $|$ \emph{Power Systems, AutoCAD, ETAP}}{North Vancouver, BC}
+      \resumeItemListStart
+        \resumeItem{Conducted formal \textbf{design reviews} and QA checks for polar icebreaker electrical systems, validating documentation against EGBC professional engineering standards.}
+        \resumeItem{Used ETAP to conduct power analysis for power system on board vessels.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+\resumeSubHeadingListStart
+
+  \resumeProjectHeading
+      {\textbf{FPGA MP3 Player (RTL Design)} $|$ \emph{SystemVerilog, RTL, Questa, Signal Tap}}{December 2024}
+      \resumeItemListStart
+        \resumeItem{Architected full \textbf{RTL design} on DE1-SoC FPGA: \textbf{FSM}-controlled \textbf{Avalon-MM} transactions, \textbf{synchronous FIFO} data buffering, and \textbf{CDC handshake protocols} for clock-domain crossing.}
+        \resumeItem{Performed \textbf{ASIC-style verification} in Questa with simulation-only memory models and \textbf{Signal Tap} on-chip logic analysis for timing validation.}
+      \resumeItemListEnd
+      
+ \resumeProjectHeading
+      {\textbf{FPGA Tetris} $|$ \emph{FPGA, C, 68k processor, SystemVerilog RTL}}{April 2024}
+      \resumeItemListStart
+      \resumeItem{Integrated a \textbf{VGA display core} to the DE1 FPGA, mapping its memory to the 68k processor and audible feedback from emulated SPO256 speech synthesizer during gameplay}
+      \resumeItem{Implemented hardware \textbf{timer interrupts} in Verilog for precise time-keeping required by the game's clock function in \textbf{C}.}
+      \resumeItem{Memory-mapped registers in hardware to control the VGA core's cursor appearance and behavior}
+        \resumeItemListEnd
+
+  \resumeProjectHeading
+      {\textbf{CMOS Inverter Design \& Characterization} $|$ \emph{Cadence Virtuoso, Spectre/SPICE}}{December 2025}
+      \resumeItemListStart
+        \resumeItem{Sized PMOS/NMOS transistors for a \textbf{symmetrical CMOS inverter} in a deep sub-micron process, balancing $t_{p,LH}$ and $t_{p,HL}$ within \textbf{5\,ps} and minimizing \textbf{Area-Delay Product} under a 10\,fF load.}
+        \resumeItem{Verified timing margins and waveform integrity via \textbf{Spectre transient simulations} before design sign-off.}
+      \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{HDL \& Verification}{: SystemVerilog, RTL Design, FSM, Functional Coverage, SVA, UVM (familiar), Questa, ModelSim, Signal Tap, Spectre/SPICE} \\
+     \textbf{EDA \& Software}{: Cadence Virtuoso, LTSpice, Intel Platform Designer, FPGA (DE1-SoC), C, C++, Python, Git, Linux, SQL, MATLAB}
+    }}
+ \end{itemize}
+
+%-------------------------------------------
+\end{document}
