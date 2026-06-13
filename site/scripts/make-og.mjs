@@ -8,7 +8,7 @@ const out = fileURLToPath(new URL('../public/og.png', import.meta.url));
 
 const svg = `
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630">
-  <rect width="1200" height="630" fill="#FAFAF8"/>
+  <rect width="1200" height="630" fill="#F6F1E7"/>
   <rect x="0" y="0" width="14" height="630" fill="#1E5AA8"/>
   <!-- bus-tap motif echoing the favicon -->
   <line x1="92" y1="430" x2="92" y2="560" stroke="#1E5AA8" stroke-width="6"/>

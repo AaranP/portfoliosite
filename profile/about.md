@@ -9,8 +9,6 @@ links:
   email: aaranp1919@gmail.com    # TODO: decide whether email is published on the site (phone/address stay out per SCHEMA.md convention 3)
 ---
 
-## Bio
-
 I'm an electrical engineer (UBC BASc '26, EIT with EGBC) working across
 two lanes: digital/ASIC verification and power systems. I've verified
 photonics simulation software at Synopsys and Display IP silicon at AMD,

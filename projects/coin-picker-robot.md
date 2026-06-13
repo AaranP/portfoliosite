@@ -24,7 +24,13 @@ problem: >
 outcomes:
   - text: Working autonomous coin retrieval demonstrated on video — detection, perimeter avoidance, navigation, and electromagnet pickup.
     evidence: YouTube demo linked in repo README; Coin Picking Robot Report.pdf in repo
-media:
+media:                           # images clipped from the design report (Figures 9, 12, 13)
+  - file: robot.jpg
+    caption: The coin-picking robot — drive base, breadboards, and sensor wiring
+  - file: pickup-arm.jpg
+    caption: Electromagnet pickup arm on two servos, with collected coins in the basket
+  - file: h-bridge-diagram.png
+    caption: H-bridge motor driver with optocoupler isolation (report block diagram)
   - file: coin-picker-report.pdf
     caption: Full design report (40 pages)
 related_experience: []

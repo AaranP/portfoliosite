@@ -2,13 +2,13 @@
    [data-theme="dark"]. Accent discipline: accent only on links, active
    filter chips, timeline dots, and primary buttons. */
 :root {
-  --bg: #FAFAF8;            /* off-white, not pure white */
+  --bg: #F6F1E7;            /* beige white (user preference, overrides spec's #FAFAF8) */
   --text: #1A1A1A;
   --text-muted: #5A5A55;
   --accent: #1E5AA8;        /* the ONE accent: links, chips, timeline dots */
   --accent-soft: #E8EFF8;   /* chip/tag backgrounds */
   --surface: #FFFFFF;       /* cards */
-  --border: #E4E2DC;
+  --border: #E3DCCB;        /* warmed to sit on the beige bg */
 
   --font-body: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-display: 'Space Grotesk', var(--font-body);

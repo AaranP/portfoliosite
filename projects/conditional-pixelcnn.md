@@ -26,7 +26,13 @@ outcomes:
     evidence: cpen455_final_project_report.pdf in repo (abstract & architecture sections)
   - text: "TODO: final test accuracy and FID score (in the report/leaderboard — fill in actual numbers)."
     evidence: cpen455_final_project_report.pdf
-media:
+media:                           # images clipped from the report (architecture figure, W&B panels)
+  - file: generated-samples.png
+    caption: Class-conditional samples generated across three conditioning strategies
+  - file: architecture.png
+    caption: PixelCNN++ multi-scale architecture (report Figure 1)
+  - file: validation-accuracy.png
+    caption: Validation accuracy across conditioning strategies during training
   - file: cpen455-report.pdf
     caption: Final project report (NeurIPS format)
 related_experience: []

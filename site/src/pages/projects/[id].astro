@@ -55,6 +55,50 @@ const hasRepo = data.repo.startsWith('http');
       }
     </header>
 
+    {/* media leads, directly under the header links (user preference) */}
+    {
+      images.length > 0 && (
+        <section aria-label="Media" class="media">
+          {images.map((m) =>
+            m.image.format === 'gif' ? (
+              <figure>
+                <img
+                  src={m.image.src}
+                  alt={m.caption || data.name}
+                  width={m.image.width}
+                  height={m.image.height}
+                  loading="eager"
+                />
+                {m.caption && <figcaption class="muted">{m.caption}</figcaption>}
+              </figure>
+            ) : (
+              <figure>
+                <Image
+                  src={m.image}
+                  alt={m.caption || data.name}
+                  width={960}
+                  widths={[640, 960, 1440]}
+                  sizes="(max-width: 1024px) 92vw, 960px"
+                  loading="eager"
+                />
+                {m.caption && <figcaption class="muted">{m.caption}</figcaption>}
+              </figure>
+            ),
+          )}
+        </section>
+      )
+    }
+
+    {
+      documents.length > 0 && (
+        <p class="documents">
+          {documents.map((m) => (
+            <a href={m.url}>{m.caption || 'Report'} (PDF)</a>
+          ))}
+        </p>
+      )
+    }
+
     <p class="lede">{data.summary}</p>
 
     <h2>Problem</h2>
@@ -76,55 +120,6 @@ const hasRepo = data.repo.startsWith('http');
     {role && <p><strong>My role:</strong> {role}</p>}
 
     <Content />
-
-    {
-      images.length > 0 && (
-        <section aria-label="Media">
-          <h2>Media</h2>
-          {images.map((m) =>
-            m.image.format === 'gif' ? (
-              <figure>
-                <img
-                  src={m.image.src}
-                  alt={m.caption || data.name}
-                  width={m.image.width}
-                  height={m.image.height}
-                  loading="lazy"
-                />
-                {m.caption && <figcaption class="muted">{m.caption}</figcaption>}
-              </figure>
-            ) : (
-              <figure>
-                <Image
-                  src={m.image}
-                  alt={m.caption || data.name}
-                  width={960}
-                  widths={[640, 960, 1440]}
-                  sizes="(max-width: 1024px) 92vw, 960px"
-                  loading="lazy"
-                />
-                {m.caption && <figcaption class="muted">{m.caption}</figcaption>}
-              </figure>
-            ),
-          )}
-        </section>
-      )
-    }
-
-    {
-      documents.length > 0 && (
-        <>
-          <h2>Documents</h2>
-          <ul>
-            {documents.map((m) => (
-              <li>
-                <a href={m.url}>{m.caption || 'Report'} (PDF)</a>
-              </li>
-            ))}
-          </ul>
-        </>
-      )
-    }
   </article>
 </Base>
 
@@ -165,6 +160,25 @@ const hasRepo = data.repo.startsWith('http');
   article :global(h2) {
     font-size: var(--step-2);
     margin-top: 1.5em;
+  }
+
+  .media {
+    margin-top: 1rem;
+  }
+
+  .media figure:first-child {
+    margin-top: 0;
+  }
+
+  .documents {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .documents a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
   }
 
   figure {
