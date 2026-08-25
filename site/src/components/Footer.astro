@@ -1,5 +1,6 @@
 ---
 import { aboutEntry } from '../lib/data';
+import ContactEmail from './ContactEmail.astro';
 
 const about = await aboutEntry();
 const { links } = about.data;
@@ -10,7 +11,7 @@ const { links } = about.data;
     <ul class="contact">
       <li><a href={links.github}>GitHub</a></li>
       <li><a href={links.linkedin}>LinkedIn</a></li>
-      <li><a href={`mailto:${links.email}`}>{links.email}</a></li>
+      <li><ContactEmail email={links.email} label="Email" /></li>
     </ul>
     <p class="muted">
       © {new Date().getFullYear()} {about.data.name} · Built with

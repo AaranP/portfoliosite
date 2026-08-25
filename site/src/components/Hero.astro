@@ -1,6 +1,7 @@
 ---
 import { Picture } from 'astro:assets';
 import { aboutEntry } from '../lib/data';
+import ContactEmail from './ContactEmail.astro';
 import photo from '../../../profile/photo.png';
 
 const about = await aboutEntry();
@@ -29,7 +30,7 @@ const { name, headline, location, links } = about.data;
     <ul class="links">
       <li><a href={links.github}>GitHub</a></li>
       <li><a href={links.linkedin}>LinkedIn</a></li>
-      <li><a href={`mailto:${links.email}`}>Email</a></li>
+      <li><ContactEmail email={links.email} /></li>
     </ul>
   </div>
 </section>
