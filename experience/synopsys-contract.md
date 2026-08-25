@@ -1,7 +1,7 @@
 ---
 id: synopsys-contract
 company: Synopsys
-title: Junior Verification Engineer
+title: R&D Verification Engineer
 employment_type: contract
 location: Vancouver, BC          # TODO: confirm
 remote: false                    # TODO: confirm
@@ -19,18 +19,23 @@ achievements:
   - text: "TODO: quantifiable outcomes — only if real (bank E1 guardrail)"
     evidence: ""
 related_projects: []
-resume_bullets: []               # not yet on either resume (bank E1 note)
+resume_bullets:                
+  - "Designed a modular Python verification framework for Lumerical script commands, automating release-wide command validation to replace manual QA protocols."
+  - "Maintaining and executing test plans, and contributing to testing metrics, reporting, and defect management."
+  - "Investigating and reproducing defects, collaborating with R&D teams to verify fixes, and driving continuous product improvement through functional, regression, and performance testing."
 references:
   manager: ""
 links: []
-featured: false                  # TODO: feature once content exists — this is the current role
-visibility: private              # TODO: flip to public once filled and checked for NDA-adjacent details
+featured: true
+visibility: public
 ---
 
 ## Context
+
 Current role (bank E1, dv track). Continuation at Synopsys after the R&D
 Verification Internship ([[synopsys-coop]]). Everything below the title is
 still TODO in the experience bank — fill there first, then mirror here.
 
 ## Stories
+
 TODO.

@@ -22,10 +22,8 @@ achievements:
   - text: ""                     # TODO: Bamboo CI/CD build plans + Squish automated testing are commented out on the dv master — confirm if real, then promote
     evidence: ""
 related_projects: []
-resume_bullets:
-  - "Designed a modular Python verification framework for Lumerical script commands, automating release-wide command validation to replace manual QA protocols."
-  - "Maintaining and executing test plans, and contributing to testing metrics, reporting, and defect management."
-  - "Investigating and reproducing defects, collaborating with R&D teams to verify fixes, and driving continuous product improvement through functional, regression, and performance testing."
+resume_bullets: []
+  
 references:
   manager: ""                    # TODO: name/role only
 links: [https://www.ansys.com/products/photonics]   # TODO: confirm best product link for Lumerical under Synopsys
